@@ -11,4 +11,5 @@ group { $local_group:
 
 file { $local_dir:
   ensure => 'absent',
+  force  => true,
 }
