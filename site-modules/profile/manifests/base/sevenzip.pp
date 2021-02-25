@@ -5,13 +5,13 @@ class profile::base::sevenzip {
   #   seven_zip_provider => 'windows',
   # }
   require chocolatey
-  notify{ 'inside serverzip class': }
+  
   package {'7zip':
     ensure   => 'installed',
     provider => 'chocolatey',
   }
 
-  # reboot {'after':
-  #   subscribe => Package['7zip'],
-  # }
+  reboot {'after':
+    subscribe => Package['7zip'],
+  }
 }
