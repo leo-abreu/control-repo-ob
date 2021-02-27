@@ -5,13 +5,14 @@ class profile::base::sevenzip {
   #   seven_zip_provider => 'windows',
   # }
   require chocolatey
-  
+
   package {'7zip':
     ensure   => 'installed',
     provider => 'chocolatey',
   }
 
-  reboot {'after':
-    subscribe => Package['7zip'],
+  reboot {'dsc_request':
+    when   => 'pending',
+    onlyif =>  'pending_dsc_reboot'
   }
 }
