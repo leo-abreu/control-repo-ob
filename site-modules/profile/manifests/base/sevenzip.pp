@@ -15,4 +15,9 @@ class profile::base::sevenzip {
     when   => 'pending',
     onlyif =>  'pending_dsc_reboot'
   }
+
+  reboot {'kickoff_reboot':
+    subscribe => File['c:/kickoff_reboot.txt'],
+
+  }
 }
