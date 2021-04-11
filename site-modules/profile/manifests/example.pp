@@ -6,6 +6,13 @@ class profile::example {
   group { $group_name:
     ensure   => 'present',
   }
+notify{"host value = ${facts['host']}":}
+if $facts['host'] =~ /^b/ {
+  notify {'Server is a member of the \'Banking\' Business Unit':}
+}
+if $facts['host'] =~ /^r/ {
+  notify {'Server is a member of the \'Retail\' Business Unit':}
+}
 
   user { $user_name:
     ensure => 'present',

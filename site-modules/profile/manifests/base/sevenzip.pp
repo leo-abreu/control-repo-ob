@@ -11,13 +11,13 @@ class profile::base::sevenzip {
     provider => 'chocolatey',
   }
 
-  reboot {'dsc_request':
-    when   => 'pending',
-    onlyif =>  'pending_dsc_reboot'
+  unless $facts['build_stage'] == 'production' {
+    notify{'unless: server rebooting...':}
+    reboot {'after':
+      subscribe => Package['7zip'],
+    }
   }
 
-  reboot {'kickoff_reboot':
-    subscribe => File['c:/kickoff_reboot.txt'],
+  notify{"buildstage: ${facts['build_stage']}":}
 
-  }
 }
