@@ -1,4 +1,6 @@
-class profile::example {
+class profile::example (
+  $user_pw = undef,
+){
   $dir_name = 'c:/exampledir'
   $user_name = 'exampleuser'
   $group_name = 'examplegroup'
@@ -6,13 +8,14 @@ class profile::example {
   group { $group_name:
     ensure   => 'present',
   }
-notify{"host value = ${facts['host']}":}
-if $facts['host'] =~ /^b/ {
-  notify {'Server is a member of the \'Banking\' Business Unit':}
-}
-if $facts['host'] =~ /^r/ {
-  notify {'Server is a member of the \'Retail\' Business Unit':}
-}
+  notify{"host value = ${facts['host']}":}
+  if $facts['host'] =~ /^b/ {
+    notify {'Server is a member of the \'Banking\' Business Unit':}
+  }
+  if $facts['host'] =~ /^r/ {
+    notify {'Server is a member of the \'Retail\' Business Unit':}
+  }
+  notify{'profile::example::user_pw: ${user_pw}':}
 
   user { $user_name:
     ensure => 'present',
