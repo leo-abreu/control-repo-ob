@@ -15,7 +15,7 @@ class profile::example (
   if $facts['host'] =~ /^r/ {
     notify {'Server is a member of the \'Retail\' Business Unit':}
   }
-  notify{'profile::example::user_pw: ${user_pw}':}
+  notify{"profile::example::user_pw: ${user_pw}":}
 
   user { $user_name:
     ensure => 'present',
