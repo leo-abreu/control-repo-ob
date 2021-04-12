@@ -1,4 +1,5 @@
 ---
+  profile::example::message: "message from retail eyaml"
   profile::example::user_pw: >
     ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEw
 DQYJKoZIhvcNAQEBBQAEggEAEkIzUigpziuSlb5JbAqiKqb0bbmo6+tGUIg0
