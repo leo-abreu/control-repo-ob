@@ -1,5 +1,7 @@
 class profile::example (
   $user_pw = undef,
+  $testvar = undef,
+  $message = undef,
 ){
   $dir_name = 'c:/exampledir'
   $user_name = 'exampleuser'
@@ -15,7 +17,9 @@ class profile::example (
   if $facts['host'] =~ /^r/ {
     notify {'Server is a member of the \'Retail\' Business Unit':}
   }
+  notify{"profile::example::user_pw: ${message}":}
   notify{"profile::example::user_pw: ${user_pw}":}
+  notify{"profile::example::user_pw: ${testvar}":}
 
   user { $user_name:
     ensure => 'present',
