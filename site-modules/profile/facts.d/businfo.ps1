@@ -1,4 +1,4 @@
-$hostname = get-content env:computername
+#$hostname = get-content env:computername
 $Path = "C:\ProgramData\PuppetLabs\facter\facts.d\buildinfo.txt"
 $values = [pscustomobject](Get-Content $Path -Raw | ConvertFrom-StringData)
 $hostname = $values.host
