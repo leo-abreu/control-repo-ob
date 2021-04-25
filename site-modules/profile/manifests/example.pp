@@ -10,7 +10,7 @@ class profile::example (
   group { $group_name:
     ensure   => 'present',
   }
-  notify{"Business unit: ${bu}"}
+  notify{"Business unit: ${facts['bu']}":}
   notify{"host value = ${facts['host']}":}
   # if $facts['host'] =~ /^b/ {
   #   notify {'Server is a member of the \'Banking\' Business Unit':}
