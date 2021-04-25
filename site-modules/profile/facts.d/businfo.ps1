@@ -1,6 +1,8 @@
 $hostname = get-content env:computername
-$hostname = 'RA-WIN1'
-Write-Host -foregroundcolor Yellow "Computername is $hostname"
+$Path = "C:\ProgramData\PuppetLabs\facter\facts.d\buildinfo.txt"
+$values = [pscustomobject](Get-Content $Path -Raw | ConvertFrom-StringData)
+$hostname = $values.host
+#Write-Host -foregroundcolor Yellow "Computername is $hostname"
 if ($hostname.StartsWith('r', "CurrentCultureIgnoreCase")) {
     Write-Host "bu=retail"
 }
