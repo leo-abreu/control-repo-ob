@@ -1,0 +1,1 @@
+$hostname = get-content env:computername
