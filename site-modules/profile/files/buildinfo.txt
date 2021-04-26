@@ -1,0 +1,5 @@
+# This is a file that can be copied to the agent's facts.d directory
+# to define static external facts.
+# For example on windows the path would be  "C:\ProgramData\PuppetLabs\facter\facts.d\buildinfo.txt"
+build_stage=dev
+host=r100winus
